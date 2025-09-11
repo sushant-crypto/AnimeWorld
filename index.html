@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime In Hindi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      color: #ffccff;
+      text-shadow: 2px 2px #000;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #e0e0ff;
+    }
+
+    .search-bar {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .search-bar input {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      width: 250px;
+      font-size: 1rem;
+    }
+
+    .search-bar button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      border-radius: 8px;
+      border: none;
+      background-color: #ffccff;
+      color: #1f1c2c;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 3rem;
+    }
+
+    .card {
+      text-align: center;
+      width: 220px;
+    }
+
+    .card a {
+      position: relative;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+      border: 2px solid #fff;
+    }
+
+    .card a:hover {
+      transform: scale(1.1);
+    }
+
+    .card a::after {
+      content: attr(data-title);
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card a:hover::after {
+      opacity: 1;
+    }
+
+    .anime-title {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #ffccff;
+      font-weight: bold;
+      text-shadow: 1px 1px #000;
+    }
+
+    .message {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0077cc;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      animation: fadeInOut 3s ease forwards;
+      display: none;
+    }
+
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translateY(20px); }
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(20px); }
+    }
+
+    footer {
+      padding: 1rem;
+      background: rgba(255,255,255,0.1);
+      border-top: 1px solid rgba(255,255,255,0.2);
+      font-size: 0.9rem;
+      color: #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Anime In Hindi</h1>
+    <p>Click on an anime image to visit its page!</p>
+  </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search Anime..." />
+    <button onclick="searchAnime()">Search</button>
+  </div>
+
+  <main class="gallery">
+  <div class="card">
+    <a href="https://t.me/TSUKIMICHI_XI" target="_blank" onclick="showMessage('You clicked Tsukimichi!')" data-title="Tsukimichi Moonlit Fantasy">
+      <img src="tsuki.jpg" alt="Tsukimichi Moonlit Fantasy season 04" />
+    </a>
+    <div class="anime-title">Tsukimichi Moonlit Fantasy</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/A_Daily_Life_of_Immortal_King_xi" target="_blank" onclick="showMessage('You clicked Immortal King!')" data-title="The Daily Life of Immortal King Season 04">
+      <img src="the1.jpg" alt="The Daily Life of Immortal King" />
+    </a>
+    <div class="anime-title">The Daily Life of Immortal King</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/solo_leveling_xi" target="_blank" onclick="showMessage('You clicked Solo Leveling!')" data-title="Solo Leveling Season 02">
+      <img src="solo.jpeg" alt="Solo Leveling season 02" />
+    </a>
+    <div class="anime-title">Solo Leveling</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/possibly_the_greatest_xi" target="_blank" onclick="showMessage('You clicked Possibly The Greatest Alchemist!')" data-title="Possibly The Greatest Alchemist">
+      <img src="possibly.jpg" alt="Possibly The Greatest Alchemist" />
+    </a>
+    <div class="anime-title">Possibly The Greatest Alchemist</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/Wind_Breaker_Season_1_xi" target="_blank" onclick="showMessage('You clicked Wind Breaker!')" data-title="Wind Breaker">
+      <img src="wind.jpg" alt="Wind Breaker" />
+    </a>
+    <div class="anime-title">Wind Breaker</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/No_Longer_Allowed_In_Another_xi" target="_blank" onclick="showMessage('You clicked No Longer Allowed In Another!')" data-title="No Longer Allowed In Another">
+      <img src="no.jpg" alt="No Longer Allowed In Another" />
+    </a>
+    <div class="anime-title">No Longer Allowed In Another</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/the_unaware_atelier_master_xi" target="_blank" onclick="showMessage('You clicked The Unaware Atelier Master!')" data-title="The Unaware Atelier Master">
+      <img src="unaware.jpg" alt="The Unaware Atelier Master" />
+    </a>
+    <div class="anime-title">The Unaware Atelier Master</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/Mashle_Magic_and_Muscles_xi" target="_blank" onclick="showMessage('You clicked Mashle: Magic and Muscles!')" data-title="Mashle: Magic and Muscles">
+      <img src="Mashle _ Magic and Muscles.jpeg" alt="Mashle: Magic and Muscles" />
+    </a>
+    <div class="anime-title">Mashle: Magic and Muscles</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/rent_a_girlfriend_in_hindi_xi" target="_blank" onclick="showMessage('You clicked Rent A Girlfriend!')" data-title="Rent A Girlfriend">
+      <img src="rent.jpeg" alt="Rent A Girlfriend" />
+    </a>
+    <div class="anime-title">Rent A Girlfriend</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/I_Was_Reincarnation_As_The_7" target="_blank" onclick="showMessage('You clicked I Was Reincarnation As The 7 Prince!')" data-title="I Was Reincarnation As The 7 Prince">
+      <img src="I Was Reincarnation As The 7 Prince.avif" alt="I Was Reincarnation As The 7 Prince" />
+    </a>
+    <div class="anime-title">I Was Reincarnation As The 7th Prince</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/The_wrong_way_to_use_heailing_xi" target="_blank" onclick="showMessage('You clicked The Wrong Way To Use Healing Magic!')" data-title="The Wrong Way To Use Healing Magic">
+      <img src="wrong.jpg" alt="The Wrong Way To Use Healing Magic" />
+    </a>
+    <div class="anime-title">The Wrong Way To Use Healing Magic</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/Sakamoto_Days_xi" target="_blank" onclick="showMessage('You clicked Sakamoto Days!')" data-title="Sakamoto Days">
+      <img src="sak.jpg" alt="Sakamoto Days" />
+    </a>
+    <div class="anime-title">Sakamoto Days</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/+JLAeZJhdAtpmYzE1" target="_blank" onclick="showMessage('You clicked My Dress Up Darling!')" data-title="My Dress Up Darling">
+      <img src="mydress.jpg" alt="My Dress Up Darling" />
+    </a>
+    <div class="anime-title">My Dress Up Darling</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/+HADNfhQR3mozNDJl" target="_blank" onclick="showMessage('You clicked A Couple Of Cuckoos!')" data-title="A Couple Of Cuckoos">
+      <img src="couple.png" alt="A Couple Of Cuckoos" />
+    </a>
+    <div class="anime-title">A Couple Of Cuckoos</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/+raQopc4mA2I4OTdl" target="_blank" onclick="showMessage('You clicked Dan Da Dan!')" data-title="Dan Da Dan">
+      <img src="dan.jpg" alt="Dan Da Dan" />
+    </a>
+    <div class="anime-title">Dan Da Dan</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/+dv_WASKLQNI1M2M9" target="_blank" onclick="showMessage('You clicked Goblin Slayer!')" data-title="Goblin Slayer">
+      <img src="slayer.jpg" alt="Goblin Slayer" />
+    </a>
+    <div class="anime-title">Goblin Slayer</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/+R4CEUTuQDxVjNDI1" target="_blank" onclick="showMessage('You clicked Welcome to demon school!')" data-title="Welcome to demon school">
+      <img src="demon.jpg" alt="Welcome to demon school" />
+    </a>
+    <div class="anime-title">Welcome to demon school</div>
+  </div>
+
+  <div class="card">
+    <a href="https://t.me/+LGMF653TfGg1Zjdl" target="_blank" onclick="showMessage('You clicked I Was Reincarnated as the 7th Prince!')" data-title="I Was Reincarnated as the 7th Prince">
+      <img src="prince.jpg" alt="I Was Reincarnated as the 7th Prince" />
+    </a>
+    <div class="anime-title">I Was Reincarnated as the 7th Prince</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+
+  <div class="card">
+    <a href="Link" target="_blank" onclick="showMessage('You clicked NAME!')" data-title="NAME">
+      <img src="IMAGE" alt="NAME" />
+    </a>
+    <div class="anime-title">NAME</div>
+  </div>
+</main>
+
+
+  <div class="message" id="clickMessage"></div>
+
+  <footer>
+    <p>Made with ❤️ by Sushant</p>
+  </footer>
+
+  <script>
+    function showMessage(text) {
+      const msg = document.getElementById('clickMessage');
+      msg.textContent = text;
+      msg.style.display = 'block';
+      msg.style.animation = 'fadeInOut 3s ease forwards';
+      setTimeout(() => {
+        msg.style.display = 'none';
+      }, 3000);
+    }
+
+    function searchAnime() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('.anime-title').textContent.toLowerCase();
+        card.style.display = title.includes(input) ? 'inline-block' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
