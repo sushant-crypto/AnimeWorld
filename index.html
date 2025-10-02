@@ -35,6 +35,91 @@
       color: #e0e0ff;
     }
 
+    /* Hero Slider */
+    .hero-slider {
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      scroll-snap-type: x mandatory;
+      background: rgba(255,255,255,0.05);
+      padding: 1rem 0;
+    }
+
+    .hero-track {
+      display: flex;
+      gap: 20px;
+      padding: 1rem 2rem;
+    }
+
+    .hero-slide {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 600px;
+      position: relative;
+      scroll-snap-align: start;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+    }
+
+    .hero-slide:hover {
+      transform: scale(1.03);
+    }
+
+    .hero-slide img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .hero-caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: #ffccff;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 1px 1px #000;
+    }
+
+    /* Main Site Button */
+    .main-site-button {
+      text-align: center;
+      margin: 2rem 0;
+    }
+
+    .main-site-button a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: #ffccff;
+      color: #1f1c2c;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .main-site-button a:hover {
+      transform: scale(1.05);
+    }
+
+    .main-site-image {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Search Bar */
     .search-bar {
       text-align: center;
       margin: 2rem 0;
@@ -59,6 +144,7 @@
       cursor: pointer;
     }
 
+    /* Gallery */
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -88,25 +174,6 @@
 
     .card a:hover {
       transform: scale(1.1);
-    }
-
-    .card a::after {
-      content: attr(data-title);
-      position: absolute;
-      bottom: -30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.6);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card a:hover::after {
-      opacity: 1;
     }
 
     .anime-title {
@@ -154,11 +221,39 @@
     <p>Click on an anime image to visit its page!</p>
   </header>
 
+  <!-- Hero Slider -->
+  <section class="hero-slider">
+    <div class="hero-track" id="heroTrack">
+      <a href="https://t.me/+raQopc4mA2I4OTdl" class="hero-slide" target="_blank">
+        <img src="dan.jpg" alt="Dan Da Dan" />
+        <div class="hero-caption">Dan Da Dan</div>
+      </a>
+      <a href="https://t.me/+dv_WASKLQNI1M2M9" class="hero-slide" target="_blank">
+        <img src="slayer.jpg" alt="Goblin Slayer" />
+        <div class="hero-caption">Goblin Slayer</div>
+      </a>
+      <a href="https://t.me/+3meATlURqmlmYTdl" class="hero-slide" target="_blank">
+        <img src="demon s.jpg" alt="Demon Slayer Infinity Castle" />
+        <div class="hero-caption">Demon Slayer Infinity Castle</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Site Button -->
+  <div class="main-site-button">
+    <a href="https://yourmainwebsite.com" target="_blank">
+      <img src="your-logo.png" alt="Main Site Logo" class="main-site-image" />
+      🌐 Visit My Main Website
+    </a>
+  </div>
+
+  <!-- Search Bar -->
   <div class="search-bar">
     <input type="text" id="searchInput" placeholder="Search Anime..." />
     <button onclick="searchAnime()">Search</button>
   </div>
 
+  <!-- Anime Gallery -->
   <main class="gallery">
   <div class="card">
     <a href="https://t.me/TSUKIMICHI_XI" target="_blank" onclick="showMessage('You clicked Tsukimichi Moonlit Fantasy!')" data-title="Season 1">
@@ -392,33 +487,9 @@
   </div>
 </main>
 
-
   <div class="message" id="clickMessage"></div>
 
   <footer>
-    <p>Made with ❤️ by ℙ𝕚𝕩𝕖𝕝𝕊𝕖𝕟𝕤𝕖𝕚</p>
+    <p>Made with ❤️ by PixelSensei</p>
   </footer>
 
-  <script>
-    function showMessage(text) {
-      const msg = document.getElementById('clickMessage');
-      msg.textContent = text;
-      msg.style.display = 'block';
-      msg.style.animation = 'fadeInOut 3s ease forwards';
-      setTimeout(() => {
-        msg.style.display = 'none';
-      }, 3000);
-    }
-
-    function searchAnime() {
-      const input = document.getElementById('searchInput').value.toLowerCase();
-      const cards = document.querySelectorAll('.card');
-
-      cards.forEach(card => {
-        const title = card.querySelector('.anime-title').textContent.toLowerCase();
-        card.style.display = title.includes(input) ? 'inline-block' : 'none';
-      });
-    }
-  </script>
-</body>
-</html>
